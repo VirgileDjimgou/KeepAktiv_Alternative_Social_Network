@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "718934999822",
+    "firebase_url": "https://keepactiv-bef81.firebaseio.com",
+    "project_id": "keepactiv-bef81",
+    "storage_bucket": "keepactiv-bef81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718934999822:android:07343638aac6ed31",
+        "android_client_info": {
+          "package_name": "org.KeepActive.MIF_Aalen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718934999822-mmo0tft6ehsu57ac8c3d2j6qbrj34628.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCGAwAVy1XHYpMlz_drhPA6IE6kQ2g2Wk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

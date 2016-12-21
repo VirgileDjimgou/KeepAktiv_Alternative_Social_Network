@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:padding="10dp"
+
+    tools:context="org.KeepActive.MIF_Aalen.app.MainActivity"
+    android:weightSum="1">
+
+
+    <ImageView
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:alpha="0.3"
+        android:src="@mipmap/ic_create_activity_black_24dp"
+        android:id="@+id/imageView"
+        android:layout_weight="0.55" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="0.31"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+        android:weightSum="1">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:hint="Type of new Activity ? "
+            android:id="@+id/spinner"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:background="@color/BackgroundText" />
+
+        <EditText
+            android:id="@+id/editText11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ActivityName"
+            android:inputType="textCapWords"
+            android:maxLines="1"
+            android:background="@color/BackgroundText"
+            android:layout_weight="0.40"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:autoText="false" />
+
+        <EditText
+            android:id="@+id/editText10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/when"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:inputType="textCapWords"
+            android:maxLines="1"
+            android:background="@color/BackgroundText" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/where"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:inputType="textCapWords"
+            android:maxLines="1"
+            android:background="@color/BackgroundText" />
+
+        <EditText
+            android:id="@+id/edit_texto"
+            android:layout_width="match_parent"
+            android:layout_height="106dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:hint="Description of Activity "
+            android:inputType="text|textMultiLine"
+            android:gravity="top"
+            android:background="@color/BackgroundText" />
+
+        <Button
+            android:id="@+id/btn_save"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/action_save"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_weight="0.08" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
