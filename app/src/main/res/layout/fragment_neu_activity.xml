@@ -19,7 +19,7 @@
         android:alpha="0.3"
         android:src="@mipmap/ic_create_activity_black_24dp"
         android:id="@+id/imageView"
-        android:layout_weight="0.55" />
+        android:layout_weight="0.23" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:background="@color/BackgroundText" />
 
         <EditText
-            android:id="@+id/editText11"
+            android:id="@+id/Activity_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/ActivityName"
@@ -53,7 +53,7 @@
             android:autoText="false" />
 
         <EditText
-            android:id="@+id/editText10"
+            android:id="@+id/when"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/when"
@@ -64,7 +64,7 @@
             android:background="@color/BackgroundText" />
 
         <EditText
-            android:id="@+id/editText9"
+            android:id="@+id/where"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/where"
@@ -75,15 +75,21 @@
             android:background="@color/BackgroundText" />
 
         <EditText
-            android:id="@+id/edit_texto"
+            android:id="@+id/Description"
             android:layout_width="match_parent"
-            android:layout_height="106dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:padding="10dp"
             android:hint="Description of Activity "
             android:inputType="text|textMultiLine"
             android:gravity="top"
             android:background="@color/BackgroundText" />
+
+        <Button
+            android:text="Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TestButton" />
 
         <Button
             android:id="@+id/btn_save"
@@ -110,5 +116,12 @@
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextDetails"
+        android:layout_weight="0.23" />
 
 </LinearLayout>

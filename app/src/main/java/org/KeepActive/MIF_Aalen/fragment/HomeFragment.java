@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(HomeFragment.this.getActivity() ,
-                        "Please enter the credentials!", Toast.LENGTH_LONG)
+                        "Test Button on Fragment Home  ,,,, !", Toast.LENGTH_LONG)
                         .show();
             }
         });

@@ -33,6 +33,8 @@ public class ActivityObject {
                           int cityCode,
                           float latCoord,
                           float lonCoord) {
+
+
         Activity_Name = activity_Name;
         Activity_Type = activity_Type;
         Activity_Description = activity_Description;

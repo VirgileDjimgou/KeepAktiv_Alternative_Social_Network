@@ -29,6 +29,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.KeepActive.MIF_Aalen.R;
+import org.KeepActive.MIF_Aalen.RealtimeFirebase.RealtimeFirebase;
 import org.KeepActive.MIF_Aalen.fragment.Favorites_ActivitiesFragment;
 import org.KeepActive.MIF_Aalen.fragment.HomeFragment;
 import org.KeepActive.MIF_Aalen.fragment.New_Activity_Fragment;
@@ -280,8 +281,10 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_privacy_policy:
                         // launch new intent instead of loading fragment
-                       //  startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
+                        //  startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
                         startActivity(new Intent(MainActivity.this, UserDashboard.class));
+                        // Test von Realtime  Database   ...muss spater geloscht werden  ...
+                        // startActivity(new Intent(MainActivity.this, RealtimeFirebase.class));
                         drawer.closeDrawers();
                         return true;
                     default:
