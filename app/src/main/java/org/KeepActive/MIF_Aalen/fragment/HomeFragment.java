@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment {
     EditText  TestEdit;
     Button  Button_Test;
 
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -49,6 +48,7 @@ public class HomeFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment HomeFragment.
      */
+
     // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,10 +85,6 @@ public class HomeFragment extends Fragment {
                         .show();
             }
         });
-
-
-
-
 
         return view;
     }
