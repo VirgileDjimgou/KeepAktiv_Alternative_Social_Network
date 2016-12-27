@@ -8,42 +8,45 @@ import com.google.firebase.database.IgnoreExtraProperties;
  */
 
 @IgnoreExtraProperties
-public class ActivityObject {
+public class ActivityObject_Json {
 
 
     public String Activity_Name;
     public String Activity_Type;
     public String Activity_Description;
     public String Activity_Created_by;
+    public String activity_Created_at;
     public String Street ;
     public int cityCode;
-    public float LatCoord ;
-    public float LonCoord ;
+    public double LatCoord ;
+    public double LonCoord ;
 
     // Default constructor required for calls to
-    // DataSnapshot.getValue(ActivityObject.class)
-    public ActivityObject() {
-    }
-
-    public ActivityObject(String activity_Name,
-                          String activity_Type,
-                          String activity_Description,
-                          String activity_Created_by,
-                          String street,
-                          int cityCode,
-                          float latCoord,
-                          float lonCoord) {
+    // DataSnapshot.getValue(ActivityObject_Json.class)
 
 
-        Activity_Name = activity_Name;
-        Activity_Type = activity_Type;
-        Activity_Description = activity_Description;
-        Activity_Created_by = activity_Created_by;
-        Street = street;
+    public ActivityObject_Json(String activity_Name,
+                               String activity_Type,
+                               String activity_Description,
+                               String activity_Created_by,
+                               String activity_Created_at,
+                               String street,
+                               int cityCode,
+                               double latCoord,
+                               double lonCoord) {
+
+
+        this.Activity_Name = activity_Name;
+        this.Activity_Type = activity_Type;
+        this.Activity_Description = activity_Description;
+        this.Activity_Created_by = activity_Created_by;
+        this.activity_Created_at = activity_Created_at;
+        this.Street = street;
         this.cityCode = cityCode;
-        LatCoord = latCoord;
-        LonCoord = lonCoord;
+        this.LatCoord = latCoord;
+        this.LonCoord = lonCoord;
     }
+
 
     public String getActivity_Name() {
         return Activity_Name;
@@ -77,6 +80,14 @@ public class ActivityObject {
         Activity_Created_by = activity_Created_by;
     }
 
+    public String getActivity_Created_at() {
+        return activity_Created_at;
+    }
+
+    public void setActivity_Created_at(String activity_Created_at) {
+        this.activity_Created_at = activity_Created_at;
+    }
+
     public String getStreet() {
         return Street;
     }
@@ -93,7 +104,7 @@ public class ActivityObject {
         this.cityCode = cityCode;
     }
 
-    public float getLatCoord() {
+    public double getLatCoord() {
         return LatCoord;
     }
 
@@ -101,7 +112,7 @@ public class ActivityObject {
         LatCoord = latCoord;
     }
 
-    public float getLonCoord() {
+    public double getLonCoord() {
         return LonCoord;
     }
 

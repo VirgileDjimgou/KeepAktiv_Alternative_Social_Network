@@ -12,7 +12,7 @@ public class user {
     public String email;
 
     // Default constructor required for calls to
-    // DataSnapshot.getValue(ActivityObject.class)
+    // DataSnapshot.getValue(ActivityObject_Json.class)
     public user() {
     }
 

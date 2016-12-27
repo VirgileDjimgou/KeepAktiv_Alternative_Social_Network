@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.KeepActive.MIF_Aalen.R;
 import org.KeepActive.MIF_Aalen.RealtimeFirebase.ActivityObject;
 import org.KeepActive.MIF_Aalen.RealtimeFirebase.RealtimeFirebase;
+import org.KeepActive.MIF_Aalen.helper.ActivityObject_Json;
 
 public class New_Activity_Fragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -110,19 +111,36 @@ public class New_Activity_Fragment extends Fragment {
         Create_Activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = Activity_Name.getText().toString();
-                String email = when.getText().toString();
+                String Act_name = Activity_Name.getText().toString();
+                String Act_type = when.getText().toString();
 
                 Toast.makeText(New_Activity_Fragment.this.getActivity() ,
-                        "Create and save of new Activity on Database ... !", Toast.LENGTH_LONG)
+                        "Create and save  new Activity on Firebase  Database ... !", Toast.LENGTH_LONG)
                         .show();
 
                 // Check for already existed userId
-                if (TextUtils.isEmpty(userId)) {
-                    createUser(name, email);
-                } else {
-                    updateUser(name, email);
-                }
+
+                    if (TextUtils.isEmpty(userId)) {
+                        userId = mFirebaseDatabase.push().getKey();
+                    }
+
+                    // ActivityObject activityObject = new ActivityObject(Act_Name, Act_Type);
+                    ActivityObject_Json Object_zu_Senden = new ActivityObject_Json(
+                            Act_name,
+                            Act_type,
+                            "Fake Description ...",
+                            "Created by",
+                            "Created at",
+                            "Act_Street",
+                            55,
+                            33.56986f,
+                            45.69898
+                    );
+
+                    mFirebaseDatabase.child(userId).setValue(Object_zu_Senden);
+
+                    addUserChangeListener();
+
             }
 
         });
@@ -147,6 +165,7 @@ public class New_Activity_Fragment extends Fragment {
                 String appTitle = dataSnapshot.getValue(String.class);
 
                 // update toolbar title
+                // momentan nicht funktionfaghig mit Fragment ....
                 // getSupportActionBar().setTitle(appTitle);
                 Toast.makeText(New_Activity_Fragment.this.getActivity() ,
                         "Update apptitle !" + appTitle, Toast.LENGTH_LONG)
@@ -204,37 +223,33 @@ public class New_Activity_Fragment extends Fragment {
     }
 
     /// firebase
-    private void createUser(String name, String email) {
+    private void createUser(String Act_Name,
+                            String Act_Type ,
+                            String Act_Desc ,
+                            String Act_Created_by ,
+                            String Act_Created_at ,
+                            String Act_Street ,
+                            int Act_city_code ,
+                            float latCoord ,
+                            float lonCoord ) {
         // TODO
         // In real apps this userId should be fetched
         // by implementing firebase auth
-        if (TextUtils.isEmpty(userId)) {
-            userId = mFirebaseDatabase.push().getKey();
-        }
 
-        ActivityObject activityObject = new ActivityObject(name, email);
-
-        mFirebaseDatabase.child(userId).setValue(activityObject);
-
-        addUserChangeListener();
     }
 
 
     // Changing button text
     private void toggleButton() {
-        if (TextUtils.isEmpty(userId)) {
-            Create_Activity.setText("Save");
-        } else {
-            Create_Activity.setText("Update");
-        }
+
     }
 
 
     /**
-     * ActivityObject data change listener
+     * ActivityObject_Json data change listener
      */
     private void addUserChangeListener() {
-        // ActivityObject data change listener
+        // ActivityObject_Json data change listener
         mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -242,11 +257,11 @@ public class New_Activity_Fragment extends Fragment {
 
                 // Check for null
                 if (activityObject == null) {
-                    Log.e(TAG, "ActivityObject data is null!");
+                    Log.e(TAG, "ActivityObject_Json data is null!");
                     return;
                 }
 
-                Log.e(TAG, "ActivityObject data is changed!" + activityObject.name + ", " + activityObject.email);
+                Log.e(TAG, "ActivityObject_Json data is changed!" + activityObject.name + ", " + activityObject.email);
 
                 // Display newly updated name and email
                 txtDetails.setText(activityObject.name + ", " + activityObject.email);

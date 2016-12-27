@@ -115,10 +115,10 @@ public class RealtimeFirebase extends AppCompatActivity {
     }
 
     /**
-     * ActivityObject data change listener
+     * ActivityObject_Json data change listener
      */
     private void addUserChangeListener() {
-        // ActivityObject data change listener
+        // ActivityObject_Json data change listener
         mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -126,11 +126,11 @@ public class RealtimeFirebase extends AppCompatActivity {
 
                 // Check for null
                 if (activityObject == null) {
-                    Log.e(TAG, "ActivityObject data is null!");
+                    Log.e(TAG, "ActivityObject_Json data is null!");
                     return;
                 }
 
-                Log.e(TAG, "ActivityObject data is changed!" + activityObject.name + ", " + activityObject.email);
+                Log.e(TAG, "ActivityObject_Json data is changed!" + activityObject.name + ", " + activityObject.email);
 
                 // Display newly updated name and email
                 txtDetails.setText(activityObject.name + ", " + activityObject.email);
