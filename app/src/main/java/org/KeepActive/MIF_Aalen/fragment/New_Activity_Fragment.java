@@ -133,7 +133,7 @@ public class New_Activity_Fragment extends Fragment {
         mFirebaseInstance = FirebaseDatabase.getInstance();
 
         // get reference to 'users' node
-        mFirebaseDatabase = mFirebaseInstance.getReference("users");
+        mFirebaseDatabase = mFirebaseInstance.getReference("Liste of Activities");
 
         // store app title to 'app_title' node
         mFirebaseInstance.getReference("app_title").setValue("Activities Realtime Database");
