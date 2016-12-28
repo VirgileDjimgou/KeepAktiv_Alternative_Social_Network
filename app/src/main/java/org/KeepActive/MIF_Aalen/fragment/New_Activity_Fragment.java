@@ -6,6 +6,7 @@
 package org.KeepActive.MIF_Aalen.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,9 +27,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.KeepActive.MIF_Aalen.R;
-import org.KeepActive.MIF_Aalen.RealtimeFirebase.ActivityObject;
-import org.KeepActive.MIF_Aalen.RealtimeFirebase.RealtimeFirebase;
+import org.KeepActive.MIF_Aalen.app.LoginActivity;
+import org.KeepActive.MIF_Aalen.app.MainActivity;
+import org.KeepActive.MIF_Aalen.app.UserDashboard;
 import org.KeepActive.MIF_Aalen.helper.ActivityObject_Json;
+import org.KeepActive.MIF_Aalen.helper.DateTimePicker;
 
 public class New_Activity_Fragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -46,7 +49,7 @@ public class New_Activity_Fragment extends Fragment {
         // Required empty public constructor
     }
 
-    private static final String TAG = RealtimeFirebase.class.getSimpleName();
+    private static final String TAG = New_Activity_Fragment.class.getSimpleName();
     EditText  Activity_Name;
     EditText  when ;
     EditText  where; // with custom Location Option
@@ -82,6 +85,7 @@ public class New_Activity_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
 
 
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -96,16 +100,16 @@ public class New_Activity_Fragment extends Fragment {
         Activity_Name = (EditText)view.findViewById(R.id.Activity_Name);
         when = (EditText)view.findViewById(R.id.when);
         txtDetails = (TextView)view.findViewById(R.id.TextDetails) ;
-         TestButton = (Button)view.findViewById(R.id.TestButton);
-
+        TestButton = (Button)view.findViewById(R.id.button3);
         TestButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(New_Activity_Fragment.this.getActivity() ,
-                        "Test Button on Fragment new Activity   ,,,, !", Toast.LENGTH_LONG)
-                        .show();
+            public void onClick(View v) {
+                Intent intent = new Intent(New_Activity_Fragment.this.getActivity(), DateTimePicker.class);
+                startActivity(intent);
             }
         });
+
+
 
         Create_Activity = (Button)view.findViewById(R.id.btn_save);
         Create_Activity.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +117,8 @@ public class New_Activity_Fragment extends Fragment {
             public void onClick(View view) {
                 String Act_name = Activity_Name.getText().toString();
                 String Act_type = when.getText().toString();
+                // startActivity(new Intent(MainActivity.this, UserDashboard.class));
+
 
                 Toast.makeText(New_Activity_Fragment.this.getActivity() ,
                         "Create and save  new Activity on Firebase  Database ... !", Toast.LENGTH_LONG)
@@ -253,18 +259,19 @@ public class New_Activity_Fragment extends Fragment {
         mFirebaseDatabase.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ActivityObject activityObject = dataSnapshot.getValue(ActivityObject.class);
+                ActivityObject_Json Object_zu_Senden = dataSnapshot.getValue(ActivityObject_Json.class);
+
 
                 // Check for null
-                if (activityObject == null) {
+                if (Object_zu_Senden == null) {
                     Log.e(TAG, "ActivityObject_Json data is null!");
                     return;
                 }
 
-                Log.e(TAG, "ActivityObject_Json data is changed!" + activityObject.name + ", " + activityObject.email);
+                Log.e(TAG, "ActivityObject_Json data is changed!" + Object_zu_Senden.getActivity_Name() + ", " + Object_zu_Senden.getActivity_Type());
 
                 // Display newly updated name and email
-                txtDetails.setText(activityObject.name + ", " + activityObject.email);
+                txtDetails.setText(Object_zu_Senden.getActivity_Name() + ", " +Object_zu_Senden.getActivity_Type());
 
                 // clear edit text
                 Activity_Name.setText("");

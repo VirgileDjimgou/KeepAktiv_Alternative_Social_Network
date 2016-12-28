@@ -47,7 +47,6 @@
             android:inputType="textCapWords"
             android:maxLines="1"
             android:background="@color/BackgroundText"
-            android:layout_weight="0.40"
             android:layout_marginBottom="10dp"
             android:padding="10dp"
             android:autoText="false" />
@@ -64,17 +63,6 @@
             android:background="@color/BackgroundText" />
 
         <EditText
-            android:id="@+id/where"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/where"
-            android:layout_marginBottom="10dp"
-            android:padding="10dp"
-            android:inputType="textCapWords"
-            android:maxLines="1"
-            android:background="@color/BackgroundText" />
-
-        <EditText
             android:id="@+id/Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,13 +71,14 @@
             android:hint="Description of Activity "
             android:inputType="text|textMultiLine"
             android:gravity="top"
-            android:background="@color/BackgroundText" />
+            android:background="@color/BackgroundText"
+            android:layout_weight="0.03" />
 
         <Button
-            android:text="Button"
+            android:text="Select a Date and Time  for this Act"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/TestButton" />
+            android:id="@+id/button3" />
 
         <Button
             android:id="@+id/btn_save"
@@ -100,8 +89,7 @@
             android:background="@color/colorPrimary"
             android:text="@string/action_save"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:layout_weight="0.08" />
+            android:textStyle="bold" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"

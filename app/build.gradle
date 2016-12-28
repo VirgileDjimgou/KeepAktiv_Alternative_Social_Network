@@ -5,7 +5,7 @@ android {
     buildToolsVersion "24.0.1"
     defaultConfig {
         applicationId "org.KeepActive.MIF_Aalen"
-        minSdkVersion 12
+        minSdkVersion 16
         targetSdkVersion 24
         versionCode 4
         versionName "4.0"
@@ -29,9 +29,7 @@ dependencies {
     compile 'com.google.firebase:firebase-database:10.0.1'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+
 
     compile 'com.android.support:appcompat-v7:24.0.0-beta1'
     compile 'com.android.support:design:24.0.0-beta1'
