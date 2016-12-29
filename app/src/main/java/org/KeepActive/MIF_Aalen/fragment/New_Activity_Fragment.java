@@ -5,19 +5,25 @@
  * */
 package org.KeepActive.MIF_Aalen.fragment;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +39,10 @@ import org.KeepActive.MIF_Aalen.app.UserDashboard;
 import org.KeepActive.MIF_Aalen.helper.ActivityObject_Json;
 import org.KeepActive.MIF_Aalen.helper.DateTimePicker;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class New_Activity_Fragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,6 +52,7 @@ public class New_Activity_Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private DrawerLayout drawer;
 
     private OnFragmentInteractionListener mListener;
 
@@ -54,22 +65,17 @@ public class New_Activity_Fragment extends Fragment {
     EditText  when ;
     EditText  where; // with custom Location Option
     EditText  Description ;
+    public static TextView TimeView;
+    public static TextView DateView;
     Button    Create_Activity;
-    Button    TestButton;
+    Button    ButtonDateTime;
+    Button    ButtonTime ;
     private TextView txtDetails;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
     private String userId;
 
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MessagesFragment.
-     */
     // TODO: Rename and change types and number of parameters
     public static New_Activity_Fragment newInstance(String param1, String param2) {
         New_Activity_Fragment fragment = new New_Activity_Fragment();
@@ -83,9 +89,6 @@ public class New_Activity_Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -100,18 +103,30 @@ public class New_Activity_Fragment extends Fragment {
         Activity_Name = (EditText)view.findViewById(R.id.Activity_Name);
         when = (EditText)view.findViewById(R.id.when);
         txtDetails = (TextView)view.findViewById(R.id.TextDetails) ;
-        TestButton = (Button)view.findViewById(R.id.button3);
-        TestButton.setOnClickListener(new View.OnClickListener() {
+        Create_Activity = (Button)view.findViewById(R.id.btn_save);
+        DateView = (TextView) view.findViewById(R.id.DateView);
+        TimeView = (TextView) view.findViewById(R.id.TimeView);
+
+        ButtonDateTime = (Button)view.findViewById(R.id.Button_Date_Time);
+
+        // diable Create Activity Button
+        // User muss give all Information  in Fields to Create a Correcty Activity
+        Create_Activity.setEnabled(false);
+
+        ButtonDateTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(New_Activity_Fragment.this.getActivity(), DateTimePicker.class);
-                startActivity(intent);
+                Intent intentDateTime = new Intent(New_Activity_Fragment.this.getActivity(), DateTimePicker.class);
+                startActivity(intentDateTime);
+                // drawer.closeDrawers();
+
+                // enable  Create Activity  Button
+                Create_Activity.setEnabled(true);
+
             }
         });
 
 
-
-        Create_Activity = (Button)view.findViewById(R.id.btn_save);
         Create_Activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,10 +138,10 @@ public class New_Activity_Fragment extends Fragment {
                 Toast.makeText(New_Activity_Fragment.this.getActivity() ,
                         "Create and save  new Activity on Firebase  Database ... !", Toast.LENGTH_LONG)
                         .show();
+//
 
                 // Check for already existed userId
-
-                    if (TextUtils.isEmpty(userId)) {
+                 if (TextUtils.isEmpty(userId)) {
                         userId = mFirebaseDatabase.push().getKey();
                     }
 
@@ -249,7 +264,6 @@ public class New_Activity_Fragment extends Fragment {
     private void toggleButton() {
 
     }
-
 
     /**
      * ActivityObject_Json data change listener

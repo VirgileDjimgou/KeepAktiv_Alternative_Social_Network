@@ -10,17 +10,4 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="org.KeepActive.MIF_Aalen.app.AboutUsActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Tetsjhkhjikjn"
-        android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/editText" />
 </RelativeLayout>

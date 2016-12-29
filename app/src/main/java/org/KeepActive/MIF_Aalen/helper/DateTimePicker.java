@@ -9,6 +9,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,14 +20,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import org.KeepActive.MIF_Aalen.R;
-
+import org.KeepActive.MIF_Aalen.fragment.New_Activity_Fragment;
 
 
 public class DateTimePicker extends AppCompatActivity {
 
     static int hour, min;
 
-    TextView txtdate, txttime;
+    public static TextView txtdate, txttime;
     Button btntimepicker, btndatepicker;
 
     java.sql.Time timeValue;
@@ -38,6 +39,7 @@ public class DateTimePicker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.datepicker);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         c = Calendar.getInstance();
         hour = c.get(Calendar.HOUR_OF_DAY);
@@ -69,10 +71,13 @@ public class DateTimePicker extends AppCompatActivity {
                                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                                     String dateInString = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                                     Date date = formatter.parse(dateInString);
+                                    String Date_to = formatter.format(date).toString();
+                                    txtdate.setText(Date_to);
+                                    // reset View
+                                    New_Activity_Fragment.DateView.setText("");
+                                    New_Activity_Fragment.DateView.setText(Date_to);
 
-                                    txtdate.setText(formatter.format(date).toString());
-
-                                    formatter = new SimpleDateFormat("dd/MMM/yyyy");
+                                   /* formatter = new SimpleDateFormat("dd/MMM/yyyy");
 
                                     txtdate.setText(txtdate.getText().toString()+"\n"+formatter.format(date).toString());
 
@@ -83,6 +88,8 @@ public class DateTimePicker extends AppCompatActivity {
                                     formatter = new SimpleDateFormat("dd.MMM.yyyy");
 
                                     txtdate.setText(txtdate.getText().toString()+"\n"+formatter.format(date).toString());
+
+                                    */
 
                                 } catch (Exception ex) {
 
@@ -109,8 +116,12 @@ public class DateTimePicker extends AppCompatActivity {
 
                                     timeValue = new java.sql.Time(format.parse(dtStart).getTime());
                                     txttime.setText(String.valueOf(timeValue));
-                                    String amPm = hourOfDay % 12 + ":" + minute + " " + ((hourOfDay >= 12) ? "PM" : "AM");
-                                    txttime.setText(amPm + "\n" + String.valueOf(timeValue));
+                                    String Time_to = timeValue.toString();
+                                    // Reset View
+                                    New_Activity_Fragment.TimeView.setText("");
+                                    New_Activity_Fragment.TimeView.setText(Time_to);
+                                    // String amPm = hourOfDay % 12 + ":" + minute + " " + ((hourOfDay >= 12) ? "PM" : "AM");
+                                    //txttime.setText(amPm + "\n" + String.valueOf(timeValue));
                                 } catch (Exception ex) {
                                     txttime.setText(ex.getMessage().toString());
                                 }
@@ -122,6 +133,23 @@ public class DateTimePicker extends AppCompatActivity {
                 td.show();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == android.R.id.home) {
+            // finish the activity
+            onBackPressed();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

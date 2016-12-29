@@ -12,23 +12,23 @@
     android:weightSum="1">
 
 
-    <ImageView
-        android:layout_width="294dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:alpha="0.3"
-        android:src="@mipmap/ic_create_activity_black_24dp"
-        android:id="@+id/imageView"
-        android:layout_weight="0.23" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="0.31"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
+        android:paddingRight="20dp"
+        android:weightSum="1"><![CDATA[
         android:weightSum="1">
+
+        ]]>
+
+        <TextView
+            android:text="Infos Activity "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextDetails"
+            android:layout_weight="0.10" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -51,16 +51,38 @@
             android:padding="10dp"
             android:autoText="false" />
 
-        <EditText
-            android:id="@+id/when"
+        <TextView
+            android:text="Activity Adresse "
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/when"
-            android:layout_marginBottom="10dp"
-            android:padding="10dp"
-            android:inputType="textCapWords"
-            android:maxLines="1"
-            android:background="@color/BackgroundText" />
+            android:id="@+id/Activity_Adresse "
+            android:layout_weight="0.10" />
+
+        <Button
+            android:text="Custom Location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Location" />
+
+        <TextView
+            android:text="Time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/TimeView"
+            android:layout_weight="0.22" />
+
+        <TextView
+            android:text="Date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/DateView"
+            android:layout_weight="0.20" />
+
+        <Button
+            android:text="Select Date and TimeTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Button_Date_Time" />
 
         <EditText
             android:id="@+id/Description"
@@ -72,13 +94,7 @@
             android:inputType="text|textMultiLine"
             android:gravity="top"
             android:background="@color/BackgroundText"
-            android:layout_weight="0.03" />
-
-        <Button
-            android:text="Select a Date and Time  for this Act"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/button3" />
+            android:layout_weight="0.27" />
 
         <Button
             android:id="@+id/btn_save"
@@ -104,12 +120,5 @@
         </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/TextDetails"
-        android:layout_weight="0.23" />
 
 </LinearLayout>

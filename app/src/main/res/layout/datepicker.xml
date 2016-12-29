@@ -16,7 +16,7 @@
 
     <Button
         android:id="@+id/btntimepicker"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffc107"
         android:layout_marginTop="5dp"
@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/btndatepicker"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffc107"
         android:text="Pick Date"
