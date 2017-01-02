@@ -101,7 +101,7 @@ public class New_Activity_Fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_neu_activity, container, false);
         Activity_Name = (EditText)view.findViewById(R.id.Activity_Name);
-        when = (EditText)view.findViewById(R.id.when);
+        //when = (EditText)view.findViewById(R.id.when);
         txtDetails = (TextView)view.findViewById(R.id.TextDetails) ;
         Create_Activity = (Button)view.findViewById(R.id.btn_save);
         DateView = (TextView) view.findViewById(R.id.DateView);
@@ -122,6 +122,8 @@ public class New_Activity_Fragment extends Fragment {
 
                 // enable  Create Activity  Button
                 Create_Activity.setEnabled(true);
+
+
 
             }
         });
