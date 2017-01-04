@@ -30,6 +30,7 @@ public class AboutUsActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == android.R.id.home) {
             // finish the activity
+            // continue to anthor activity
             onBackPressed();
             return true;
         }
